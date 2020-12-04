@@ -1,7 +1,12 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to "#", class: "navbar-brand" do %>
-    <%= image_tag "https://image.flaticon.com/icons/png/512/80/80875.png" %>
-    <% end %>
+  <div>
+    <%= link_to "#", class: "navbar-brand" do %>
+      <%= image_tag "https://image.flaticon.com/icons/png/512/80/80875.png" %>
+      <% end %>
+    <% if policy(Offer).create? %>
+        <a class="btn btn-ghost" <%= link_to 'Empreste aqui', new_offer_path %> </a>
+      <% end %>
+  </div>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>

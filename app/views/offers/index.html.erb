@@ -1,29 +1,27 @@
-<p id="notice"><%= notice %></p>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_url("roupas.jpg") %>);">
+  <div class="container">
+    <h1>Me <strong>empresta</strong> hoje!</h1>
+    <p>Que roupa você quer usar?</p>
+  </div>
+</div>
+
 <div class="container">
-  <h1>Me empresta hoje!</h1>
-  <h2>Que roupa você quer usar?</h1>
-
- 
-
-    <div class="card">
-      <% @offers.each do |offer| %>
+  <div class="cards">
+    <% @offers.each do |offer| %>
+      <div class="card-trip">
         <% if offer.photo.attached? %>
-          <p class="card-img-top"><%= cl_image_tag offer.photo.key, height: 300, width: 400, crop: :fill %></p>
+          <p><%= cl_image_tag offer.photo.key, height: 300, width: 400, crop: :fill %></p>
         <% else %>
-          <p class="card-img-top"><%= image_tag("cabide.jpg")  %></p>
+          <p><%= image_tag("cabide.jpg")  %></p>
         <% end %>
-      <div class="card-body">
-        <p><%= link_to offer.name, offer_path(offer) %></p>
-        <p><%= link_to 'Edit', edit_offer_path(offer) %></p>
-        <%= link_to 'Destroy', offer, method: :delete, data: { confirm: 'Are you sure?' } %></p>
-      <% end %>
+        <div class="card-trip-infos">
+          <p><%= link_to offer.name, offer_path(offer) %></p>
+        </div>
+        <div class="card-trip-pricing">
+          <%= link_to 'Edit', edit_offer_path(offer) %>
+          <%= link_to 'Destroy', offer, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
       </div>
-    </div>
-
-    
-
-  <br>
-  <% if policy(Offer).create? %>
-    <%= link_to 'New offer', new_offer_path %>
-  <% end %>
+    <% end %>
+  </div>
 </div>
