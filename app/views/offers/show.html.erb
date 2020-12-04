@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+  <h1>Offer</h1>
+  <div>
+    <p>
+      <strong>Name:</strong>
+      <%= @offer.name %>
+    </p>
+    <p>
+      <strong>Description:</strong>
+      <%= @offer.description %>
+    </p>
+    <p>
+      <strong>Gender:</strong>
+      <%= @offer.gender %>
+    </p>
+    <p>
+      <strong>Type:</strong>
+      <%= @offer.offerType %>
+    </p>
+    <p>
+      <strong>Style:</strong>
+      <%= @offer.style %>
+    </p>
+    <p>
+      <strong>Size:</strong>
+      <%= @offer.size %>
+    </p>
+    <p>
+      <strong>Price per day:</strong>
+      <%= @offer.price_per_day %>
+    </p>
+    <p>
+      <strong>User:</strong>
+      <%= @offer.user_id %>
+    </p>
+  </div>
+  <div>
+    <%= link_to 'Edit', edit_offer_path(@offer) %>
+    <%= link_to 'Destroy', offer_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Back', offers_path %>
+  </div>
+</div>
