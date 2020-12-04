@@ -22,6 +22,21 @@ User.create!(email: 'hflobo@gmail.com',
 User.create!(email: 'hugo@fuscolobo.com.br',
         password: '123456'
           )
+User.create!(email: 'joao@email.com',
+         password: '123456'
+            )
+
+User.create!(email: 'marina@email.com',
+          password: '123456'
+            )
+
+User.create!(email: 'hugo@email.com',
+          password: '123456'
+            )
+
+User.create!(email: 'admin@email.com',
+          password: '123456'
+              )
 
 puts 'Creating offers...'
 names = %w[vestido camisa saia calça sapato ]
