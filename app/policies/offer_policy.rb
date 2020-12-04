@@ -5,6 +5,7 @@ class OfferPolicy < ApplicationPolicy
     end
   end
 
+
   def create?
     true
   end
@@ -19,5 +20,6 @@ class OfferPolicy < ApplicationPolicy
 
   def destroy?
     true
+
   end
 end
