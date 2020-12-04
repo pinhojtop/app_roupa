@@ -3,6 +3,11 @@
 <div class="container">
   <h1>Offer</h1>
   <div>
+    <% if @offer.photo.present? %>
+      <%= cl_image_tag @offer.photo.key, height: 300, width: 400, crop: :fill %>
+    <% else %>
+      <%= image_tag("cabide.jpg")  %>
+    <% end %>
     <p>
       <strong>Name:</strong>
       <%= @offer.name %>
