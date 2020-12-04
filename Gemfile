@@ -23,6 +23,8 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+#Gema para dar suporte a fotos hospedadas na nuvem
+gem 'cloudinary', '~> 1.16.0'
 # autenticacao
 gem 'devise'
 #autorizacao
