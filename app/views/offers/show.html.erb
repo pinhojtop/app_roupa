@@ -31,6 +31,10 @@
       <%= @offer.price_per_day %>
     </p>
     <p>
+      <strong>Avaliação:</strong>
+      <%= @offer.rating %>
+    </p>
+    <p>
       <strong>User:</strong>
       <%= @offer.user_id %>
     </p>
@@ -38,6 +42,20 @@
   <div>
     <%= link_to 'Edit', edit_offer_path(@offer) %>
     <%= link_to 'Destroy', offer_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Avalie', new_offer_review_path(@offer) %>
     <%= link_to 'Back', offers_path %>
   </div>
+  <div>
+    <ul class="list-group">
+      <% @offer.reviews.each do |review| %>
+        <li class="list-group-item">
+          <%= review.content %> |
+          <%= link_to 'Apagar', review_path(review), method: :delete, data: { confirm: 'Tem certeza de que deseja apagar a avaliação?' } %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </div>
+
+
+<!-- ... -->

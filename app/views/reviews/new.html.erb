@@ -1,0 +1,9 @@
+<%= simple_form_for [ @offer, @review ] do |f| %>
+  <%= f.input :content, class: "form-control" %>
+  <%= f.input :rating, class: "form-control" %>
+  <%= f.submit "Enviar avaliação", class: "btn btn-primary" %>
+<% end %>
+
+<div class="my-4">
+  <%= link_to 'Voltar', offer_path(@offer) %>
+</div>
