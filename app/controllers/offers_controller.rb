@@ -60,6 +60,6 @@ class OffersController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def offer_params
-    params.require(:offer).permit(:name, :description, :offerType, :size, :gender, :style, :price_per_day)
+    params.require(:offer).permit(:name, :description, :offer_type, :size, :gender, :style, :price_per_day)
   end
 end
