@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2020_12_03_220744) do
 
   # These are extensions that must be enabled in order to support this database
@@ -18,7 +19,9 @@ ActiveRecord::Schema.define(version: 2020_12_03_220744) do
   create_table "offers", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.string "offerType"
+
+    t.string "offer_type"
+
     t.string "size"
     t.string "gender"
     t.string "style"
