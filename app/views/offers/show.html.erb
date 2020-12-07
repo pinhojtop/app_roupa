@@ -59,7 +59,10 @@
 
     <%= link_to 'Back', offers_path %>
   </div>
+
+
   <br>
+
   <h2>Rents</h2>
   <div>
     <table class="table table-bordered">
@@ -73,8 +76,10 @@
           <% end %>
         </thead>
         <% i = 0 %>
+
         <% offer_ordered = @offer.rents.order("begin_date").all %>
         <% offer_ordered.each do |rent| %>
+
 
           <% if @offer.user_id == current_user || rent.final_date >= Date.today %>
             <tr>
@@ -113,6 +118,7 @@
 
   <div>
       <%= render "rents/new", offer: @offer, rent: @rent %>
+
   <div>
     <ul class="list-group">
       <% @offer.reviews.each do |review| %>
