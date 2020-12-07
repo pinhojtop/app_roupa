@@ -1,0 +1,6 @@
+<h3>Rent</h3>
+<%= simple_form_for [offer, rent] do |f| %>
+  <%= f.input :begin_date %>
+  <%= f.input :final_date %>
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>
