@@ -1,19 +1,22 @@
 class ReviewsController < ApplicationController
 
   before_action :authenticate_user!
+  before_action :set_rent, only: %i[new create]
 
   def new
-    @offer = Offer.find(params[:offer_id])
     @review = Review.new
+    @review.rent = @rent
   end
 
   def create
     @review = Review.new(review_params)
-    # we need `offer_id` to associate review with corresponding offer
-    @offer = Offer.find(params[:offer_id])
-    @review.offer = @offer
+    # we need `rent_id` to associate review with corresponding rent
+    @review.rent = @rent
+
+    authorize @review
+
     if @review.save
-      redirect_to offer_path(@offer)
+      redirect_to rent_path(@rent)
     else
       render :new
     end
@@ -21,12 +24,19 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review = Review.find(params[:id])
+
+    authorize @review
+
     @review.destroy
 
-    redirect_to offer_path(@review.offer)
+    redirect_to offer_path(@review.rent.offer)
   end
 
   private
+
+    def set_rent
+      @rent = Rent.find(params[:rent_id])
+    end
 
     def review_params
       params.require(:review).permit(:content, :rating)
