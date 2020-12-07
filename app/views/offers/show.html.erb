@@ -60,7 +60,7 @@
     <%= link_to 'Back', offers_path %>
   </div>
 
-<---------- parte do Joao Vicente ---------->
+
 <br>
   <h2>Rents</h2>
   <div>
@@ -75,7 +75,7 @@
           <% end %>
         </thead>
         <% i = 0 %>
-        <% @offer.rent.each do |rent| %>
+        <% @offer.rents.each do |rent| %>
           <% if @offer.user_id == current_user || rent.final_date >= Date.today %>
             <tr>
               <% i = i + 1 %>
@@ -113,7 +113,7 @@
 
   <div>
       <%= render "rents/new", offer: @offer, rent: @rent %>
-<-------------parte do hugo ou da Marina, antes do push do Joao Vicente----------->
+
   <div>
     <ul class="list-group">
       <% @offer.reviews.each do |review| %>

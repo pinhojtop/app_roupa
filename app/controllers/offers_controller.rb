@@ -15,6 +15,11 @@ class OffersController < ApplicationController
     @rent = Rent.new
   end
 
+  def my_offers
+    @offers = Offer.where("user_id = ?", current_user.id)
+    authorize @offers
+  end
+
   # GET /offers/new
   def new
     @offer = Offer.new

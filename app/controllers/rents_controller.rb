@@ -30,6 +30,11 @@ class RentsController < ApplicationController
     authorize @rent
   end
 
+  def my_rents
+    @rents = Rent.where("user_id = ?", current_user.id)
+    authorize @rents
+  end
+  
   private
 
   # Only allow a trusted parameter "white list" through.
