@@ -49,9 +49,14 @@
 
 </div>
   <div>
-    <%= link_to 'Edit', edit_offer_path(@offer) %>
-    <%= link_to 'Destroy', offer_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% if policy(@offer).edit? %>
+      <%= link_to 'Edit', edit_offer_path(@offer) %>
+    <% end %>
+    <% if policy(@offer).destroy? %>
+      <%= link_to 'Destroy', offer_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
     <%= link_to 'Avalie', new_offer_review_path(@offer) %>
+
     <%= link_to 'Back', offers_path %>
   </div>
 
