@@ -51,17 +51,33 @@
         </thead>
         <% i = 0 %>
         <% @offer.rent.each do |rent| %>
+          <% if @offer.user_id == current_user || rent.final_date >= Date.today %>
+            <tr>
+              <% i = i + 1 %>
+              <td><%= i %></td>
+              <td><%= rent.begin_date %></td>
+              <td><%= rent.final_date %></td>
+              <% if @offer.user == current_user %>
+                <td>
+                  <%= link_to rent_path(rent), method: :delete, data: { confirm: "Are you sure?" } do %>
+                    <i class="fa fa-trash destroy_dose"></i>
+                  <% end %>
+                </td>
+              <% end %>
+            </tr>
+          <% end %>
+        <% end %>
+        <% if i == 0 %>
           <tr>
-            <% i = i + 1 %>
-            <td><%= i %></td>
-            <td><%= rent.begin_date %></td>
-            <td><%= rent.final_date %></td>
             <% if @offer.user == current_user %>
-              <td>
-                <%= link_to rent_path(rent), method: :delete, data: { confirm: "Are you sure?" } do %>
-                  <i class="fa fa-trash destroy_dose"></i>
-                <% end %>
-              </td>
+              <td>This offer was never rented</td>
+            <% else %>
+              <td>No rents for this offer</td>
+            <% end %>
+            <td></td>
+            <td></td>
+            <% if @offer.user == current_user %>
+              <td></td>
             <% end %>
           </tr>
         <% end %>
