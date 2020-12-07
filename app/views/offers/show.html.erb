@@ -59,9 +59,7 @@
 
     <%= link_to 'Back', offers_path %>
   </div>
-
-<---------- parte do Joao Vicente ---------->
-<br>
+  <br>
   <h2>Rents</h2>
   <div>
     <table class="table table-bordered">
@@ -75,7 +73,9 @@
           <% end %>
         </thead>
         <% i = 0 %>
-        <% @offer.rents.each do |rent| %>
+        <% offer_ordered = @offer.rents.order("begin_date").all %>
+        <% offer_ordered.each do |rent| %>
+
           <% if @offer.user_id == current_user || rent.final_date >= Date.today %>
             <tr>
               <% i = i + 1 %>
@@ -113,7 +113,6 @@
 
   <div>
       <%= render "rents/new", offer: @offer, rent: @rent %>
-<-------------parte do hugo ou da Marina, antes do push do Joao Vicente----------->
   <div>
     <ul class="list-group">
       <% @offer.reviews.each do |review| %>

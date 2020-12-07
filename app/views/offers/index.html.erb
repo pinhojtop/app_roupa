@@ -18,8 +18,10 @@
           <p><%= link_to offer.name, offer_path(offer) %></p>
         </div>
         <div class="card-trip-pricing">
-          <%= link_to 'Edit', edit_offer_path(offer) %>
-          <%= link_to 'Destroy', offer, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% if offer.user == current_user %>
+            <%= link_to 'Edit', edit_offer_path(offer) %>
+            <%= link_to 'Destroy', offer, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
         </div>
       </div>
     <% end %>
