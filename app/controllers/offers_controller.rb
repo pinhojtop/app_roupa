@@ -11,6 +11,8 @@ class OffersController < ApplicationController
 
   # GET /offers/1
   def show
+    @offer = Offer.find(params[:id])
+    @rent = Rent.new
   end
 
   # GET /offers/new
@@ -60,6 +62,7 @@ class OffersController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def offer_params
-    params.require(:offer).permit(:name, :description, :offer_type, :size, :gender, :style, :price_per_day, :photo)
+    params.require(:offer).permit(:id, :name, :description, :offer_type, :size, :gender, :style, :price_per_day)
+
   end
 end

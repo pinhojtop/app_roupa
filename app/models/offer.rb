@@ -1,7 +1,9 @@
 class Offer < ApplicationRecord
   belongs_to :user
+
   has_many :reviews, dependent: :destroy
-  
+  has_many :rents
+
   has_one_attached :photo
   
   def rating
