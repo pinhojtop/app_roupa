@@ -1,12 +1,5 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_url("roupas.jpg") %>);">
-  <div class="container">
-    <h1>Me <strong>empresta</strong> hoje!</h1>
-    <p>Que roupa você quer usar?</p>
-  </div>
-</div>
-
 <div class="container">
-  
+  <h1>Minhas roupas</h1>
   <div class="cards">
     <% @offers.each do |offer| %>
       <div class="card-trip">
@@ -16,7 +9,6 @@
           <p><%= image_tag("cabide.jpg") %></p>
         <% end %>
         <div class="card-trip-infos">
-
           <div>
             <h2><%= link_to offer.name.capitalize, offer_path(offer), class: "a-primary" %></h2>
             <p><%= offer.description %></p>
@@ -25,7 +17,6 @@
             <p><%= link_to 'Editar', edit_offer_path(offer), class: "a-primary"%></p>
             <p><%= link_to 'Apagar', offer, method: :delete, data: { confirm: 'Are you sure?' }, class: "a-primary"%></p>
           </div>
-
         </div>
       </div>
     <% end %>

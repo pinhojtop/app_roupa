@@ -11,4 +11,9 @@ class RentPolicy < ApplicationPolicy
   def destroy?
     true
   end
+  
+  def my_rents?
+    true
+  end
+  
 end

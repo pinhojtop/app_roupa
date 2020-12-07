@@ -1,3 +1,5 @@
+
+
 .cards{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr
@@ -7,24 +9,31 @@
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin: 10px 10px;
+  color:black;
 }
 
 .card-trip > img {
-  height: 200px;
+  max-height: 300px;
   width: 100%;
   object-fit: cover;
+
 }
 
 .card-trip h2 {
   font-size: 16px;
   font-weight: bold;
   margin: 0;
+  color:black;
+  text-decoration: none;
 }
 
 .card-trip p {
   font-size: 12px;
   opacity: .7;
   margin: 0;
+  color:black;
+
 }
 
 
@@ -42,3 +51,4 @@
   top: -20px;
   width: 40px;
 }
+

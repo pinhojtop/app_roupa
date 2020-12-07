@@ -20,4 +20,8 @@ class OfferPolicy < ApplicationPolicy
   def destroy?
     record.user == user
   end
+
+  def my_offers?
+    true
+  end
 end

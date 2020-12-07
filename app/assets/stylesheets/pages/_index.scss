@@ -1,2 +1,16 @@
 // Import page-specific CSS files here.
 @import "home";
+
+.a-primary{
+  color: rgb(100, 100, 100);
+}
+
+.a-primary:hover{
+  color: rgb(32, 29, 29);
+  text-decoration: none;
+}
+
+.form{
+  margin: auto;
+  width: 40%;
+}

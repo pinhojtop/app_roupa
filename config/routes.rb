@@ -11,4 +11,9 @@ Rails.application.routes.draw do
 
   resources :reviews, only: [:destroy]
   resources :rents, only: [:destroy]
+
+
+  get "my_offers", to: "offers#my_offers"
+  get "my_rents", to: "rents#my_rents"
+
 end
