@@ -7,7 +7,8 @@ class RentsController < ApplicationController
     @rent = Rent.new(rent_params)
     @rent.user = current_user
     @rent.offer = @offer
-    authorize @rent
+    @rent
+      .authorize @rent
 
     datas_ocupadas = period_avaliable
     if datas_ocupadas.zero?

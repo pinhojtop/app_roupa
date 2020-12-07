@@ -16,6 +16,7 @@
           <p><%= image_tag("cabide.jpg") %></p>
         <% end %>
         <div class="card-trip-infos">
+
           <div>
             <h2><%= link_to offer.name.capitalize, offer_path(offer), class: "a-primary" %></h2>
             <p><%= offer.description %></p>
@@ -24,6 +25,7 @@
             <p><%= link_to 'Editar', edit_offer_path(offer), class: "a-primary"%></p>
             <p><%= link_to 'Apagar', offer, method: :delete, data: { confirm: 'Are you sure?' }, class: "a-primary"%></p>
           </div>
+
         </div>
       </div>
     <% end %>
