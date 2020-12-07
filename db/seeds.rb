@@ -8,10 +8,13 @@
 
 require 'faker'
 
-puts 'Cleaning database...'
-Offer.destroy_all
-Rent.destroy_all
+puts 'Cleaning reviews...'
 Review.destroy_all
+puts 'Cleaning rents...'
+Rent.destroy_all
+puts 'Cleaning offers...'
+Offer.destroy_all
+puts 'Cleaning users...'
 User.destroy_all
 
 puts 'creating users...'
@@ -42,26 +45,27 @@ styles = %w[formal casual sport home dressed-to-kill]
             price_per_day: rand(20..40),
             user_id: rand(User.first.id..User.last.id)
             )
-  puts "creating reviews..."
-  rand(1..5).times do |j|
-    Review.create!(rating: rand(1..5),
-                content: Faker::ChuckNorris.fact,
-                user_id: rand(User.first.id..User.last.id),
-                offer_id: offer.id
-      )
-  end
 
   puts "creating rents..."
   rand(0..5).times do |j|
     date = Faker::Date.backward(days: 30)
     # puts date.to_s
     # puts (date + rand(1..10)).to_s
-    Rent.create!(begin_date: date,
+    rent = Rent.create!(begin_date: date,
           final_date: date + rand(1..10),
           price: rand(20..40),
           user_id: rand(User.first.id..User.last.id),
           offer_id: offer.id
       )
+
+    rand(0..1).times do |x|
+      puts "creating review #{x + 1}"
+      Review.create!(rating: rand(1..5),
+                content: Faker::ChuckNorris.fact,
+                user_id: rand(User.first.id..User.last.id),
+                rent_id: rent.id
+      )
+    end
   end
 
 end
