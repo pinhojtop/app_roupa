@@ -1,7 +1,13 @@
+<h1>Me empresta hoje</h1>
 <p id="notice"><%= notice %></p>
 <div class="container">
   <h1>Offer</h1>
   <div>
+    <% if @offer.photo.present? %>
+      <%= cl_image_tag @offer.photo.key, height: 300, width: 400, crop: :fill %>
+    <% else %>
+      <%= image_tag("cabide.jpg")  %>
+    <% end %>
     <p>
       <strong>Name:</strong>
       <%= @offer.name %>
@@ -30,13 +36,27 @@
       <strong>Price per day:</strong>
       <%= @offer.price_per_day %>
     </p>
-  </div>
+
+    
+    <p>
+      <strong>Avaliação:</strong>
+      <%= @offer.rating %>
+    </p>
+    <p>
+      <strong>User:</strong>
+      <%= @offer.user_id %>
+    </p>
+
+</div>
   <div>
     <%= link_to 'Edit', edit_offer_path(@offer) %>
     <%= link_to 'Destroy', offer_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Avalie', new_offer_review_path(@offer) %>
     <%= link_to 'Back', offers_path %>
   </div>
-  <br>
+
+<---------- parte do Joao Vicente ---------->
+<br>
   <h2>Rents</h2>
   <div>
     <table class="table table-bordered">
@@ -88,5 +108,19 @@
 
   <div>
       <%= render "rents/new", offer: @offer, rent: @rent %>
+<-------------parte do hugo ou da Marina, antes do push do Joao Vicente----------->
+  <div>
+    <ul class="list-group">
+      <% @offer.reviews.each do |review| %>
+        <li class="list-group-item">
+          <%= review.content %> |
+          <%= link_to 'Apagar', review_path(review), method: :delete, data: { confirm: 'Tem certeza de que deseja apagar a avaliação?' } %>
+        </li>
+      <% end %>
+    </ul>
+
   </div>
 </div>
+
+
+<!-- ... -->

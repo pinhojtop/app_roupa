@@ -1,5 +1,15 @@
 class Offer < ApplicationRecord
   belongs_to :user
-  has_many :rent
-  has_many :review
+
+  has_many :reviews, dependent: :destroy
+  has_many :rents
+
+  has_one_attached :photo
+  
+  def rating
+    reviews = self.reviews
+    total = reviews.inject(0) { |sum, review| sum + review[:rating] }
+    avg = total.fdiv(reviews.count).round(2)
+    avg.nan? ? 'none' : avg
+  end
 end
