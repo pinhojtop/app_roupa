@@ -6,7 +6,7 @@ class OffersController < ApplicationController
 
   # GET /offers
   def index
-    @offers = policy_scope(Offer)
+    @offers = policy_scope(Offer) #.order(asc) se quiser colocar em ordem alfabética ou .order(created_at: :desc) para colocar os mais novos primeiros
   end
 
   # GET /offers/1
