@@ -71,21 +71,19 @@
               <th>Valor</th>
               <% if @offer.user == current_user %>
                 <th>Excluir</th>
-              <% else %>
-                <th></th>
               <% end %>
 
             </thead>
             <% i = 0 %>
             <% offer_ordered = @offer.rents.order("begin_date").all %>
             <% offer_ordered.each do |rent| %>
-              <% if @offer.user_id == current_user || rent.final_date <= Date.today %>
+              <% if @offer.user == current_user || rent.final_date >= Date.today %>
                 <tr>
                   <% i = i + 1 %>
                   <td><%= i %></td>
                   <td><%= rent.begin_date %></td>
                   <td><%= rent.final_date %></td>
-                  <% if rent.user == current_user %>
+                  <% if @offer.user == current_user || rent.user == current_user %>
                     <td><%= rent.price %></td>
                   <% else %>
                     <td>-x-</td>
@@ -94,19 +92,9 @@
                   <% if @offer.user == current_user %>
                     <td>
                       <%= link_to rent_path(rent), method: :delete, data: { confirm: "Are you sure?" } do %>
-                        <i class="fa fa-trash destroy_dose"></i>
+                        <i class="fa fa-trash"></i>
                       <% end %>
                     </td>
-                  <% else %>
-                    <% if rent.user == current_user %>
-                      <td>
-                        <%= link_to new_offer_review_path(@offer) do %>
-                          <i class="fas fa-edit"></i>
-                        <% end %>
-                      </td>
-                    <% else %>
-                      <td>-x-</td>
-                    <% end %>
                   <% end %>
                 </tr>
               <% end %>
