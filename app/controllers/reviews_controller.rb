@@ -6,6 +6,8 @@ class ReviewsController < ApplicationController
   def new
     @review = Review.new
     @review.rent = @rent
+
+    authorize @review
   end
 
   def create
@@ -16,7 +18,7 @@ class ReviewsController < ApplicationController
     authorize @review
 
     if @review.save
-      redirect_to rent_path(@rent)
+      redirect_to my_rents_path, notice: 'Avaliação criada com sucesso.'
     else
       render :new
     end
@@ -29,13 +31,13 @@ class ReviewsController < ApplicationController
 
     @review.destroy
 
-    redirect_to offer_path(@review.rent.offer)
+    redirect_to offer_path(@review.rent.offer), notice: 'Avaliação apagada com sucesso.'
   end
 
   private
 
     def set_rent
-      @rent = Rent.find(params[:Rent_id])
+      @rent = Rent.find(params[:id])
     end
 
     def review_params

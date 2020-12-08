@@ -1,6 +1,7 @@
 class Offer < ApplicationRecord
   belongs_to :user
   has_many :rents, dependent: :destroy
+  has_many :reviews, through: :rents
 
   has_one_attached :photo
 
@@ -20,6 +21,7 @@ class Offer < ApplicationRecord
     end
     return reviews
   end
+
 end
 
 # <%= link_to 'Avalie', new_offer_review_path(@offer) %>
