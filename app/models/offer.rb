@@ -1,7 +1,7 @@
 class Offer < ApplicationRecord
   belongs_to :user
   has_many :rents, dependent: :destroy
-  has_many :reviews, through: :rents
+  has_many :reviews, through: :rents, dependent: :destroy
 
   has_one_attached :photo
 
