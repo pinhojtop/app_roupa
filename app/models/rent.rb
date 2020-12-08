@@ -3,7 +3,7 @@ class Rent < ApplicationRecord
   belongs_to :offer
   has_one :review
 
-  validate :date_cannot_be_in_the_past
+  # validate :date_cannot_be_in_the_past
   validate :final_date_greater_or_equal_to_begin_date
   validates :begin_date, presence: true
   validates :final_date, presence: true
