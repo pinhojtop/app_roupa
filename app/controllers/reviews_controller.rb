@@ -35,7 +35,7 @@ class ReviewsController < ApplicationController
   private
 
     def set_rent
-      @rent = Rent.find(params[:rent_id])
+      @rent = Rent.find(params[:Rent_id])
     end
 
     def review_params
