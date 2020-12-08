@@ -9,7 +9,7 @@
           <p><%= image_tag("cabide.jpg") %></p>
         <% end %>
         <div class="text-center my-2">
-          <%= link_to "Avaliar", new_rent_reviews_path(rent), class: "btn btn-primary
+          <%= link_to "Avaliar", new_rent_reviews_path(rent), class: "btn btn-outline-secondary
             #{' disabled' unless (rent.review.nil? && rent.final_date < Date.today) }" %>
         </div>
         <div class="card-trip-infos">
