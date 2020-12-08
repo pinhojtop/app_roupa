@@ -1,6 +1,6 @@
-<h3>Alugue</h3>
+<h3><strong>Escolha o período:<strong></h3>
 <%= simple_form_for [offer, rent] do |f| %>
-  <%= f.input :begin_date %>
-  <%= f.input :final_date %>
-  <%= f.button :submit, class: "btn btn-primary" %>
+  <%= f.input :begin_date, label: 'Data Início' %>
+  <%= f.input :final_date, label: 'Data Final' %>
+  <%= f.button :submit, "Alugar", class: "btn btn-primary" %>
 <% end %>

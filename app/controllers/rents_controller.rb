@@ -7,6 +7,8 @@ class RentsController < ApplicationController
     @rent = Rent.new(rent_params)
     @rent.user = current_user
     @rent.offer = @offer
+    @rent.price = @offer.price_per_day * (@rent.final_date - @rent.begin_date + 1)
+
 
     authorize @rent
 

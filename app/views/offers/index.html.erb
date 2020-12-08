@@ -22,8 +22,10 @@
             <p><%= offer.description %></p>
           </div>
           <div class="card-trip-pricing">
-            <p><%= link_to 'Editar', edit_offer_path(offer), class: "a-primary"%></p>
-            <p><%= link_to 'Apagar', offer, method: :delete, data: { confirm: 'Are you sure?' }, class: "a-primary"%></p>
+            <% if offer.user == current_user %>
+              <p><%= link_to 'Editar', edit_offer_path(offer), class: "a-primary"%></p>
+              <p><%= link_to 'Apagar', offer, method: :delete, data: { confirm: 'Are you sure?' }, class: "a-primary"%></p>
+            <% end %>
           </div>
 
         </div>
