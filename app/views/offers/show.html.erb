@@ -136,7 +136,7 @@
           <div class="mx-2">
             <% if policy(review).destroy? %>
               <%= link_to review_path(review), method: :delete, data: { confirm: "Tem certeza que deseja apagar a avaliação?" } do %>
-                <i class="fa fa-trash destroy_dose"></i>
+                <i class="fa fa-trash destroy_dose btn-outline-secondary"></i>
               <% end %>
             <% end %>
           </div>
