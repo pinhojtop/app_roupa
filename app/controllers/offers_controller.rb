@@ -6,7 +6,7 @@ class OffersController < ApplicationController
 
   # GET /offers
   def index
-    @offers = policy_scope(Offer) #.order(asc) se quiser colocar em ordem alfabética ou .order(created_at: :desc) para colocar os mais novos primeiros
+    @offers = policy_scope(Offer) # .order(asc) se quiser colocar em ordem alfabética ou .order(created_at: :desc) para colocar os mais novos primeiros
   end
 
   # GET /offers/1
@@ -68,6 +68,5 @@ class OffersController < ApplicationController
   # Only allow a trusted parameter "white list" through.
   def offer_params
     params.require(:offer).permit(:id, :name, :description, :offer_type, :size, :gender, :style, :price_per_day, :photo)
-
   end
 end
