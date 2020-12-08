@@ -6,14 +6,14 @@
 </div>
 
 <div class="container">
-  
+
   <div class="cards">
     <% @offers.each do |offer| %>
       <div class="card-trip">
         <% if offer.photo.attached? %>
           <%= cl_image_tag offer.photo.key, height: 200, width: 200, crop: :fill %>
         <% else %>
-          <p><%= image_tag("cabide.jpg") %></p>
+          <p><%= image_tag "vestido_no_cabide.jpg", height: 200, width: 200, crop: :fill %></p>
         <% end %>
         <div class="card-trip-infos">
 
