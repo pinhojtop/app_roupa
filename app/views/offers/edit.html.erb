@@ -2,7 +2,9 @@
   <h1>Editing Offer</h1>
 
   <%= render 'form', offer: @offer %>
-  <br>
-  <%= link_to 'Show', @offer , class: "btn btn-outline-secondary"%> |
-  <%= link_to 'Back', offers_path, class: "btn btn-outline-secondary" %>
+
+  <div class="my-4">
+    <%= link_to 'Voltar', @offer, class: "btn btn-outline-secondary" %> |
+    <%= link_to 'Ofertas', offers_path, class: "btn btn-outline-secondary" %>
+  </div>
 </div>

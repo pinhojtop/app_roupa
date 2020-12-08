@@ -4,144 +4,138 @@
   <h2><Strong>Me empresta hoje!</strong></h2>
   <br>
   <div style="width: 100%; display: table;">
-  <div style="display: table-row;">
-  <div style="width: 50%; display: table-cell;">
 
-  <h3><Strong>Oferta</Strong></h3>
-  <div>
-    <% if @offer.photo.present? %>
-      <%= cl_image_tag @offer.photo.key, height: 300, width: 400, crop: :fill %>
-    <% else %>
-      <%= image_tag("cabide.jpg")  %>
-    <% end %>
-    <br><br>
-    <p>
-      <strong>Nome:</strong>
-      <%= @offer.name %>
-    </p>
-    <p>
-      <strong>Descrição:</strong>
-      <%= @offer.description %>
-    </p>
-    <p>
-      <strong>Gênero:</strong>
-      <%= @offer.gender %>
-    </p>
-    <p>
-      <strong>Estilo:</strong>
-      <%= @offer.style %>
-    </p>
-    <p>
-      <strong>Tamanho:</strong>
-      <%= @offer.size %>
-    </p>
-    <p>
-      <strong>Preço por dia:</strong>
-      <%= @offer.price_per_day %>
-    </p>
-    <p>
-      <strong>Avaliação:</strong>
-      <!--  @offer.rating -->
-    </p>
-    <p>
-      <strong>Usuário:</strong>
-      <%= @offer.user.name %>
-    </p>
-  </div>
-  <div>
-    <% if policy(@offer).edit? %>
-      <%= link_to 'Editar', edit_offer_path(@offer) , class: "btn btn-outline-secondary" %>
-    <% end %>
-    <% if policy(@offer).destroy? %>
-      <%= link_to 'Apagar', offer_path, method: :delete, data: { confirm: 'Are you sure?' }  , class: "btn btn-outline-secondary" %>
-    <% end %>
-    <br><br>
-      <%= link_to offers_path do %>Voltar
-    <% end %>
-  </div>
-  <br>
+    <div style="display: table-row;">
+      <div style="width: 50%; display: table-cell;">
+        <h3><Strong>Oferta</Strong></h3>
+        <div>
+          <% if @offer.photo.present? %>
+            <%= cl_image_tag @offer.photo.key, height: 300, width: 400, crop: :fill %>
 
-  </div>
-  <div style="display: table-cell;">
-  <h3><Strong>Aluguéis</Strong></h3>
-  <div>
-      <table class="table table-bordered">
-      <tbody>
-        <thead>
-
-          <th>Seq</th>
-          <th>Data Início</th>
-          <th>Data Fim</th>
-          <th>Valor</th>
-          <% if @offer.user == current_user %>
-            <th>Excluir</th>
           <% else %>
-            <th>Avaliar</th>
+            <%= image_tag("cabide.jpg")  %>
           <% end %>
-        </thead>
-        <% i = 0 %>
-
-        <% offer_ordered = @offer.rents.order("begin_date").all %>
-        <% offer_ordered.each do |rent| %>
-
-
-          <% if @offer.user_id == current_user || rent.final_date <= Date.today %>
-            <tr>
-              <% i = i + 1 %>
-              <td><%= i %></td>
-              <td><%= rent.begin_date %></td>
-              <td><%= rent.final_date %></td>
-              <% if rent.user == current_user %>
-                <td><%= rent.price %></td>
-              <% else %>
-                <td>-x-</td>
-              <% end %>
-              <% if @offer.user == current_user %>
-                <td>
-                  <%= link_to rent_path(rent), method: :delete, data: { confirm: "Are you sure?" } do %>
-                    <i class="fa fa-trash destroy_dose btn-outline-secondary"></i>
-                  <% end %>
-                </td>
-              <% else %>
-                <% if rent.user == current_user %>
-                  <td>
-                    <%= link_to offer_path(@offer) do %>
-                      <i class="fas fa-edit"></i>
-                    <% end %>
-                  </td>
-                <% else %>
-                  <td>-x-</td>
-                <% end %>
-              <% end %>
-            </tr>
-          <% end %>
+          <br><br>
+          <p>
+            <strong>Nome:</strong>
+            <%= @offer.name %>
+          </p>
+          <p>
+            <strong>Descrição:</strong>
+            <%= @offer.description %>
+          </p>
+          <p>
+            <strong>Gênero:</strong>
+            <%= @offer.gender %>
+          </p>
+          <p>
+            <strong>Estilo:</strong>
+            <%= @offer.style %>
+          </p>
+          <p>
+            <strong>Tamanho:</strong>
+            <%= @offer.size %>
+          </p>
+          <p>
+            <strong>Preço por dia:</strong>
+            <%= @offer.price_per_day %>
+          </p>
+          <p>
+            <strong>Usuário:</strong>
+            <%= @offer.user.name %>
+          </p>
+        </div>
+      <div>
+        <% if policy(@offer).edit? %>
+          <%= link_to 'Editar', edit_offer_path(@offer) %>
         <% end %>
-        <% if i == 0 %>
-          <tr>
-            <% if @offer.user == current_user %>
-              <td>Esta oferta nunca foi alugada</td>
-            <% else %>
-              <td>Nenhum aluguel reservado</td>
-            <% end %>
-            <td></td>
-            <td></td>
-            <td></td>
-            <% if @offer.user == current_user %>
-              <td></td>
-            <% end %>
-          </tr>
+        <% if policy(@offer).destroy? %>
+          <%= link_to 'Apagar', offer_path, method: :delete, data: { confirm: 'Are you sure?' } %>
         <% end %>
-      </tbody>
-    </table>
-  </div>
-  <br>
-  <% if not @offer.user == current_user %>
-    <div>
-      <%= render "rents/new", offer: @offer, rent: @rent %>
+        <br>
+        <%= link_to offers_path do %>
+          <i class="btn btn-primary">Voltar</i>
+        <% end %>
+      </div>
+      <br>
     </div>
-  <% end %>
+    <div style="display: table-cell;">
+      <h3><Strong>Aluguéis</Strong></h3>
+      <div>
+        <table class="table table-bordered">
+          <tbody>
+            <thead>
+              <th>Seq</th>
+              <th>Data Início</th>
+              <th>Data Fim</th>
+              <th>Valor</th>
+              <% if @offer.user == current_user %>
+                <th>Excluir</th>
+              <% else %>
+                <th></th>
+              <% end %>
 
-  </div>
+            </thead>
+            <% i = 0 %>
+            <% offer_ordered = @offer.rents.order("begin_date").all %>
+            <% offer_ordered.each do |rent| %>
+              <% if @offer.user_id == current_user || rent.final_date <= Date.today %>
+                <tr>
+                  <% i = i + 1 %>
+                  <td><%= i %></td>
+                  <td><%= rent.begin_date %></td>
+                  <td><%= rent.final_date %></td>
+                  <% if rent.user == current_user %>
+                    <td><%= rent.price %></td>
+                  <% else %>
+                    <td>-x-</td>
+
+                  <% end %>
+                  <% if @offer.user == current_user %>
+                    <td>
+                      <%= link_to rent_path(rent), method: :delete, data: { confirm: "Are you sure?" } do %>
+                        <i class="fa fa-trash destroy_dose"></i>
+                      <% end %>
+                    </td>
+                  <% else %>
+                    <% if rent.user == current_user %>
+                      <td>
+                        <%= link_to new_offer_review_path(@offer) do %>
+                          <i class="fas fa-edit"></i>
+                        <% end %>
+                      </td>
+                    <% else %>
+                      <td>-x-</td>
+                    <% end %>
+                  <% end %>
+                </tr>
+              <% end %>
+            <% end %>
+            <% if i == 0 %>
+              <tr>
+                <% if @offer.user == current_user %>
+                  <td>Esta oferta nunca foi alugada</td>
+                <% else %>
+                  <td>Nenhum aluguel reservado</td>
+                <% end %>
+                <td></td>
+                <td></td>
+                <td></td>
+                <% if @offer.user == current_user %>
+                  <td></td>
+                <% end %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <br>
+      <% if not @offer.user == current_user %>
+        <div>
+          <%= render "rents/new", offer: @offer, rent: @rent %>
+        </div>
+      <% end %>
+    </div>
   </div>
 
   <div class="my-5">
