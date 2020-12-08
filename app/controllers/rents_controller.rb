@@ -7,8 +7,9 @@ class RentsController < ApplicationController
     @rent = Rent.new(rent_params)
     @rent.user = current_user
     @rent.offer = @offer
-    
-      .authorize @rent
+    @rent.price = @offer.price_per_day * (@rent.final_date - @rent.begin_date + 1)
+
+    authorize @rent
 
     datas_ocupadas = period_avaliable
     if datas_ocupadas.zero?
@@ -35,7 +36,7 @@ class RentsController < ApplicationController
     @rents = Rent.where("user_id = ?", current_user.id)
     authorize @rents
   end
-  
+
   private
 
   # Only allow a trusted parameter "white list" through.
