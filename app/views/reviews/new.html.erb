@@ -1,9 +1,11 @@
-<%= simple_form_for [ @rent, @review ] do |f| %>
-  <%= f.input :content, class: "form-control" %>
-  <%= f.input :rating, class: "form-control" %>
-  <%= f.submit "Enviar avaliação", class: "btn btn-primary" %>
-<% end %>
+<div class="container">
+  <%= simple_form_for [ @rent, @review ] do |f| %>
+    <%= f.input :content, class: "form-control" %>
+    <%= f.input :rating, class: "form-control" %>
+    <%= f.submit "Enviar avaliação", class: "btn btn-primary" %>
+  <% end %>
 
-<div class="my-4">
-  <%= link_to 'Voltar', my_rents_path %>
+  <div class="my-4">
+    <%= link_to 'Voltar', my_rents_path %>
+  </div>
 </div>

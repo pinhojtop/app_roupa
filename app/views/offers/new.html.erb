@@ -1,8 +1,11 @@
-<div class="form">
-  <br>
-  <h1>O que você vai emprestar?</h1>
+<div class="container">
+  <div class="form">
+    <br>
+    <h1>O que você vai emprestar?</h1>
 
-  <%= render 'form', offer: @offer%>
-
-  <%= link_to 'Back', offers_path, class: "a-primary"%>
+    <%= render 'form', offer: @offer%>
+    <div class="my-4">
+      <%= link_to 'Voltar', offers_path, class: "a-primary"%>
+    </div>
+  </div>
 </div>
