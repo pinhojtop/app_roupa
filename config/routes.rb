@@ -8,10 +8,6 @@ Rails.application.routes.draw do
     resources :rents, only: [:create]
   end
 
-  resources :rents, only: i%[index show] do
-     resources :reviews, only: [ :new, :create ]
-  end
-
   resources :reviews, only: [:destroy]
   resources :rents, only: [:destroy]
 

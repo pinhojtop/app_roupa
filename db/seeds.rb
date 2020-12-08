@@ -77,7 +77,6 @@ styles = %w[formal casual sport home dressed-to-kill]
       puts "creating review #{x + 1}"
       Review.create!(rating: rand(1..5),
                 content: Faker::ChuckNorris.fact,
-                user_id: rand(User.first.id..User.last.id),
                 rent_id: rent.id
       )
     end

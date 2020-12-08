@@ -9,41 +9,41 @@
       <%= image_tag("cabide.jpg")  %>
     <% end %>
     <p>
-      <strong>Name:</strong>
+      <strong>Nome:</strong>
       <%= @offer.name %>
     </p>
     <p>
-      <strong>Description:</strong>
+      <strong>Descrição:</strong>
       <%= @offer.description %>
     </p>
     <p>
-      <strong>Gender:</strong>
+      <strong>Gênero:</strong>
       <%= @offer.gender %>
     </p>
     <p>
-      <strong>Type:</strong>
+      <strong>Tipo:</strong>
       <%= @offer.offer_type %>
     </p>
     <p>
-      <strong>Style:</strong>
+      <strong>Estilo:</strong>
       <%= @offer.style %>
     </p>
     <p>
-      <strong>Size:</strong>
+      <strong>Tamanho:</strong>
       <%= @offer.size %>
     </p>
     <p>
-      <strong>Price per day:</strong>
+      <strong>Preço por dia:</strong>
       <%= @offer.price_per_day %>
     </p>
 
-    
+
     <p>
       <strong>Avaliação:</strong>
       <%= @offer.rating %>
     </p>
     <p>
-      <strong>User:</strong>
+      <strong>Usuário:</strong>
       <%= @offer.user_id %>
     </p>
 
@@ -61,16 +61,16 @@
 
   <br>
 
-  <h2>Rents</h2>
+  <h2>Aluguéis</h2>
   <div>
     <table class="table table-bordered">
       <tbody>
         <thead>
-          <th>Seq</th>
-          <th>Begin date</th>
-          <th>End date</th>
+          <th></th>
+          <th>Início</th>
+          <th>Fim</th>
           <% if @offer.user == current_user %>
-            <th>Delete?</th>
+            <th>Apagar?</th>
           <% end %>
         </thead>
         <% i = 0 %>
@@ -79,7 +79,7 @@
         <% offer_ordered.each do |rent| %>
 
 
-          <% if @offer.user_id == current_user || rent.final_date >= Date.today %>
+          <% if @offer.user_id == current_user || rent.final_date <= Date.today %>
             <tr>
               <% i = i + 1 %>
               <td><%= i %></td>
@@ -117,7 +117,8 @@
   <div>
       <%= render "rents/new", offer: @offer, rent: @rent %>
 
-  <div>
+  <div class="my-5">
+    <h2>Avaliações</h2>
     <ul class="list-group">
       <% @offer.reviews.each do |review| %>
         <li class="list-group-item d-flex">
@@ -126,6 +127,13 @@
           </div>
           <div class="mx-2">
             <strong>Nota: <%= review.rating %>/5</strong>
+          </div>
+          <div class="mx-2">
+            <% if policy(review).destroy? %>
+              <%= link_to review_path(review), method: :delete, data: { confirm: "Tem certeza que deseja apagar a avaliação?" } do %>
+                <i class="fa fa-trash destroy_dose"></i>
+              <% end %>
+            <% end %>
           </div>
         </li>
       <% end %>
