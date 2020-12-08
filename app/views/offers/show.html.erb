@@ -55,8 +55,6 @@
     <% if policy(@offer).destroy? %>
       <%= link_to 'Destroy', offer_path, method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
-    <%= link_to 'Avalie', new_offer_review_path(@offer) %>
-
     <%= link_to 'Back', offers_path %>
   </div>
 
@@ -122,9 +120,13 @@
   <div>
     <ul class="list-group">
       <% @offer.reviews.each do |review| %>
-        <li class="list-group-item">
-          <%= review.content %> |
-          <%= link_to 'Apagar', review_path(review), method: :delete, data: { confirm: 'Tem certeza de que deseja apagar a avaliação?' } %>
+        <li class="list-group-item d-flex">
+          <div class="mx-2">
+            <%= review.content %>
+          </div>
+          <div class="mx-2">
+            <strong>Nota: <%= review.rating %>/5</strong>
+          </div>
         </li>
       <% end %>
     </ul>
