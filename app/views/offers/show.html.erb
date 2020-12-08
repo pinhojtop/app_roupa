@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
 <div class="container">
-  
+
   <h2><Strong>Me empresta hoje!</strong></h2>
   <br>
   <div style="width: 100%; display: table;">
   <div style="display: table-row;">
   <div style="width: 50%; display: table-cell;">
-  
+
   <h3><Strong>Oferta</Strong></h3>
   <div>
     <% if @offer.photo.present? %>
@@ -106,7 +106,7 @@
               <% else %>
                 <% if rent.user == current_user %>
                   <td>
-                    <%= link_to new_offer_review_path(@offer) do %>
+                    <%= link_to offer_path(@offer) do %>
                       <i class="fas fa-edit"></i>
                     <% end %>
                   </td>
@@ -141,7 +141,7 @@
       <%= render "rents/new", offer: @offer, rent: @rent %>
     </div>
   <% end %>
-  
+
   </div>
   </div>
 
