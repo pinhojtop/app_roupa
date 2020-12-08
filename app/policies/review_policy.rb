@@ -10,6 +10,6 @@ class ReviewPolicy < ApplicationPolicy
   end
 
   def destroy?
-    true
+    record.rent.user == user
   end
 end

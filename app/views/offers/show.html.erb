@@ -64,12 +64,12 @@
 
   </div>
   <div style="display: table-cell;">
-
   <h3><Strong>Aluguéis</Strong></h3>
   <div>
       <table class="table table-bordered">
       <tbody>
         <thead>
+
           <th>Seq</th>
           <th>Data Início</th>
           <th>Data Fim</th>
@@ -86,7 +86,7 @@
         <% offer_ordered.each do |rent| %>
 
 
-          <% if @offer.user_id == current_user || rent.final_date >= Date.today %>
+          <% if @offer.user_id == current_user || rent.final_date <= Date.today %>
             <tr>
               <% i = i + 1 %>
               <td><%= i %></td>
@@ -144,6 +144,29 @@
   
   </div>
   </div>
+
+  <div class="my-5">
+    <h2>Avaliações</h2>
+    <ul class="list-group">
+      <% @offer.reviews.each do |review| %>
+        <li class="list-group-item d-flex">
+          <div class="mx-2">
+            <%= review.content %>
+          </div>
+          <div class="mx-2">
+            <strong>Nota: <%= review.rating %>/5</strong>
+          </div>
+          <div class="mx-2">
+            <% if policy(review).destroy? %>
+              <%= link_to review_path(review), method: :delete, data: { confirm: "Tem certeza que deseja apagar a avaliação?" } do %>
+                <i class="fa fa-trash destroy_dose"></i>
+              <% end %>
+            <% end %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+
   </div>
 </div>
 

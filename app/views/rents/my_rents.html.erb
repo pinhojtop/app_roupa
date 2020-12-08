@@ -8,14 +8,18 @@
         <% else %>
           <p><%= image_tag("cabide.jpg") %></p>
         <% end %>
+        <div class="text-center my-2">
+          <%= link_to "Avaliar", new_rent_reviews_path(rent), class: "btn btn-primary
+            #{' disabled' unless (rent.review.nil? && rent.final_date < Date.today) }" %>
+        </div>
         <div class="card-trip-infos">
           <div>
-            <h2><%= link_to rent.offer.name.capitalize, rent_path(rent), class: "a-primary" %></h2>
+            <h2><%= link_to rent.offer.name.capitalize, offer_path(rent.offer), class: "a-primary" %></h2>
             <p>Valor: <%= rent.price %></p>
           </div>
           <div class="card-trip-pricing">
-            <p> Begin date: <%= rent.begin_date %></p>
-            <p> Final date: <%= rent.final_date %></p>
+            <p> Alugado em: <%= rent.begin_date %></p>
+            <p> até: <%= rent.final_date %></p>
           </div>
         </div>
       </div>

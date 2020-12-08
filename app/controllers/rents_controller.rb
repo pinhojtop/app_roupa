@@ -9,6 +9,7 @@ class RentsController < ApplicationController
     @rent.offer = @offer
     @rent.price = @offer.price_per_day * (@rent.final_date - @rent.begin_date + 1)
 
+
     authorize @rent
 
     datas_ocupadas = period_avaliable
@@ -35,6 +36,10 @@ class RentsController < ApplicationController
   def my_rents
     @rents = Rent.where("user_id = ?", current_user.id)
     authorize @rents
+  end
+
+  def show
+    @rent = Rent.find(params[:id])
   end
 
   private
