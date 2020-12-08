@@ -91,7 +91,8 @@
                         <i class="fa fa-trash"></i>
                       <% end %>
                     </td>
-                  <% else %>
+                  <% end %>
+                  <% if @offer.user == current_user %>
                     <td></td>
                   <% end %>
                 </tr>
