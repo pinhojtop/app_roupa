@@ -35,7 +35,7 @@
           </div>
         </div>
         <div>
-            <h4>Diária: <strong> R$ <%= @offer.price_per_day.truncate(3) %></strong></h4>
+            <h4>Diária: <strong> R$ <%= '%.2f' % @offer.price_per_day %></strong></h4>
         </div>
       <div>
       <div>
