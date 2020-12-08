@@ -2,7 +2,7 @@
   <h1>Roupas alugadas</h1>
   <div class="cards">
     <% @rents.each do |rent| %>
-      <div class="card-trip">
+      <div class="card-trip" id="<%="rent-#{rent.id}"%>">
         <% if rent.offer.photo.attached? %>
           <%= cl_image_tag rent.offer.photo.key, height: 200, width: 200, crop: :fill %>
         <% else %>

@@ -18,7 +18,7 @@ class ReviewsController < ApplicationController
     authorize @review
 
     if @review.save
-      redirect_to my_rents_path, notice: 'Avaliação criada com sucesso.'
+      redirect_to my_rents_path(anchor: "rent-#{@review.rent.id}"), notice: 'Avaliação criada com sucesso.'
     else
       render :new
     end
