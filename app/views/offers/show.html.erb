@@ -85,12 +85,14 @@
                   <% else %>
                     <td>-x-</td>
                   <% end %>
-                  <% if @offer.user == current_user %>
+                  <% if @offer.user == current_user && rent.final_date < Date.today%>
                     <td>
                       <%= link_to rent_path(rent), method: :delete, data: { confirm: "Are you sure?" } do %>
                         <i class="fa fa-trash"></i>
                       <% end %>
                     </td>
+                  <% else %>
+                    <td></td>
                   <% end %>
                 </tr>
               <% end %>
